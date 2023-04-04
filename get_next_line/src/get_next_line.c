@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 12:34:20 by lumorale          #+#    #+#             */
-/*   Updated: 2023/03/20 17:00:29 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/04 16:22:32 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static char	*ft_strjoin_free(char *s1, char *s2, int n)
 	free(s1);
 	return (str);
 }
-
 
 char	*ft_next_line(char *str)
 {

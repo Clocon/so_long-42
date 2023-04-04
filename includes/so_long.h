@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:51:53 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/04 13:42:45 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/04 16:08:44 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,22 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include <math.h>
 
-# define INVALID_ARG "Remember, valid argument is : mapName.bar\n"
-# define INVALID_NARG "Only 1 argument: mapName.bar\n"
-# define INVALID_MAP "Fail opening the map\n"
+# define INVALID_EXT "The file extension must be <.bar>\n"
+# define INVALID_PATH "The path for take the map must be <map/>\n"
+# define INVALID_NARG "The valid usage is = ./so_long <map/mapName.bar>\n"
+# define INVALID_MAP "Fail opening the map or map doesn't exist\n"
 
-/*Functions for error.c*/
+typedef struct s_game
+{
+	char	*no_map;
+	char	**map;
+	int		fd;
+	int		total_x;
+	int		total_y;
+}	t_game;
+
+/*Functions for checker.c*/
 void	error(char *msg, int to_exit);
+void	check_args(char **argv);
 
 #endif
