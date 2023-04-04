@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 13:03:58 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/04 16:33:32 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/04 18:50:54 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	map_taker(t_game *game)
 {
 	char	*tmp;
 
+	game->total_y = 0;
 	game->no_map = 0;
 	while (1)
 	{
@@ -23,8 +24,14 @@ static void	map_taker(t_game *game)
 		if (!tmp)
 			break ;
 		game->no_map = ft_strjoin(game->no_map, tmp);
+		game->total_y++;
 	}
+	close(game->fd);
+	free(tmp);
+	game->map = ft_split(game->no_map, '\n');
+	check_map(game);
 }
+
 
 int	main(int argc, char **argv)
 {
@@ -38,4 +45,5 @@ int	main(int argc, char **argv)
 	if (game.fd == -1)
 		error(INVALID_MAP, 1);
 	map_taker(&game);
+
 }
