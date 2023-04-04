@@ -6,7 +6,7 @@
 #    By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 13:19:05 by lumorale          #+#    #+#              #
-#    Updated: 2023/04/03 17:59:12 by lumorale         ###   ########.fr        #
+#    Updated: 2023/04/04 13:27:24 by lumorale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ CFLAGS			=	-Wall -Werror -Wextra
 RM				=	rm -f
 AR				=	ar -rcs
 
-SRCS			=	src/main.c \
+SRCS			=	src/so_long.c \
+					src/error.c \
 					
 
 #		COLORS		#
@@ -59,6 +60,7 @@ $(LINE):
 				@make -C ./get_next_line
 
 $(LIBMLXL):
+				@echo "\n$(CYELLOW)Go to compile MLX42 library...$(CRESET)"
 				@make -C ./MLX42
 
 $(NAME):		$(OBJS)
