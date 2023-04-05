@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:51:53 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/05 16:13:28 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/05 19:50:31 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include <math.h>
 
+
+// Constants defines
 # define INVALID_EXT "The file extension must be <.bar>\n"
 # define INVALID_PATH "The path for take the map must be <map/>\n"
 # define INVALID_NARG "The valid usage is = ./so_long <map/mapName.bar>\n"
@@ -31,20 +33,39 @@
 # define EMPTY_MAP "The map is empty\n"
 # define INVALID_MAP "The map is not valid\n"
 
+# define SPRITE_SIZE 64
+
 typedef struct s_game
 {
-	char	*no_map;
-	char	**map;
-	char	**to_check;
-	int		fd;
-	int		y_player;
-	int		x_player;
-	int		total_y;
-	int		total_x;
-	int		p_count;
-	int		c_count;
-	int		e_count;
+	char		*no_map;
+	char		**map;
+	char		**to_check;
+	int			fd;
+	int			y_player;
+	int			x_player;
+	int			total_y;
+	int			total_x;
+	int			p_count;
+	int			c_count;
+	int			e_count;
+	int			map_width;
+	int			map_height;
+	mlx_t		*mlx;
+	mlx_image_t	*limit_img;
+	mlx_image_t	*floor_img;
+	mlx_image_t	*player_img;
+	mlx_image_t	*collect_img;
+	mlx_image_t	*gate_img;
 }	t_game;
+
+typedef struct s_textures
+{
+	mlx_texture_t	*limits;
+	mlx_texture_t	*floor;
+	mlx_texture_t	*player;
+	mlx_texture_t	*collect;
+	mlx_texture_t	*gate;
+}	t_textures;
 
 /*Functions for checker.c*/
 void	check_args(char **argv);
@@ -57,4 +78,7 @@ void	final_free(t_game *game);
 
 /*Functions for utils.c*/
 char	*free_strjoin(char *s1, char *s2);
+
+/*Functions for game.c*/
+void	game_start(t_game *game);
 #endif

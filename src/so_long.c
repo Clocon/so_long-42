@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 13:03:58 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/05 16:36:08 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/05 19:41:26 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ static void	init_struct(t_game *game)
 	game->p_count = 0;
 	game->c_count = 0;
 	game->e_count = 0;
+	game->map_width = game->total_x * SPRITE_SIZE;
+	game->map_height = game->total_y * SPRITE_SIZE;
+
 }
 
 static void	map_taker(t_game *game)
@@ -63,6 +66,7 @@ int	main(int argc, char **argv)
 	if (game.fd == -1)
 		error(INVALID_FDMAP, 1);
 	map_taker(&game);
+	game_start(&game);
 	final_free(&game);
 
 }

@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 13:25:52 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/05 16:36:18 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:59:20 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	is_played(char **to_check)
 		j = -1;
 		while (to_check[i][++j])
 		{
-			if (to_check[i][j] == 'E' || to_check[i][j] == 'C')
+			if (to_check[i][j] != '1')
 				error(IMPOSIBLE_WIN, 1);
 		}
 	}
@@ -39,22 +39,19 @@ static void	is_played(char **to_check)
 
 static void	flood_fill(t_game *game, int py, int px)
 {
-	if (game->to_check[py][px] == '0')
-		game->to_check[py][px] = '1';
-	else if (game->to_check[py][px] == 'E')
+	if (game->to_check[py][px] == 'E')
 	{
 		game->to_check[py][px] = '1';
 		return ;
 	}
-	else if (game->to_check[py][px] == 'C')
-		game->to_check[py][px] = '1';
-	if (game->to_check[py - 1] && game->to_check[py - 1][px] != '1')
+	game->to_check[py][px] = '1';
+	if (game->to_check[py - 1][px] != '1')
 		flood_fill(game, py - 1, px);
-	if (game->to_check[py + 1] && game->to_check[py + 1][px] != '1')
+	if (game->to_check[py + 1][px] != '1')
 		flood_fill(game, py + 1, px);
-	if (game->to_check[py][px - 1] && game->to_check[py][px - 1] != '1')
+	if (game->to_check[py][px - 1] != '1')
 		flood_fill(game, py, px - 1);
-	if (game->to_check[py][px + 1] && game->to_check[py][px + 1] != '1')
+	if (game->to_check[py][px + 1] != '1')
 		flood_fill(game, py, px + 1);
 }
 
