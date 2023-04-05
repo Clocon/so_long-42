@@ -6,7 +6,7 @@
 #    By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 13:19:05 by lumorale          #+#    #+#              #
-#    Updated: 2023/04/04 14:21:12 by lumorale         ###   ########.fr        #
+#    Updated: 2023/04/05 12:39:23 by lumorale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ AR				=	ar -rcs
 
 SRCS			=	src/so_long.c \
 					src/checker.c \
+					src/freerror.c \
+					src/utils.c \
 					
 
 #		COLORS		#

@@ -6,18 +6,11 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 13:25:52 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/04 18:47:33 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:36:18 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void	error(char *msg, int to_exit)
-{
-	ft_putstr_fd(ft_strjoin("Error\n", msg), 2);
-	if (to_exit == 1)
-		exit (1);
-}
 
 void	check_args(char **argv)
 {
@@ -27,22 +20,61 @@ void	check_args(char **argv)
 		error(INVALID_EXT, 1);
 }
 
+static void	is_played(char **to_check)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (to_check[++i])
+	{
+		j = -1;
+		while (to_check[i][++j])
+		{
+			if (to_check[i][j] == 'E' || to_check[i][j] == 'C')
+				error(IMPOSIBLE_WIN, 1);
+		}
+	}
+}
+
+static void	flood_fill(t_game *game, int py, int px)
+{
+	if (game->to_check[py][px] == '0')
+		game->to_check[py][px] = '1';
+	else if (game->to_check[py][px] == 'E')
+	{
+		game->to_check[py][px] = '1';
+		return ;
+	}
+	else if (game->to_check[py][px] == 'C')
+		game->to_check[py][px] = '1';
+	if (game->to_check[py - 1] && game->to_check[py - 1][px] != '1')
+		flood_fill(game, py - 1, px);
+	if (game->to_check[py + 1] && game->to_check[py + 1][px] != '1')
+		flood_fill(game, py + 1, px);
+	if (game->to_check[py][px - 1] && game->to_check[py][px - 1] != '1')
+		flood_fill(game, py, px - 1);
+	if (game->to_check[py][px + 1] && game->to_check[py][px + 1] != '1')
+		flood_fill(game, py, px + 1);
+}
+
 static void	check_padding(t_game *game)
 {
 	int	y;
 	int	x;
 
 	y = 0;
-	game->p_count = 0;
-	game->c_count = 0;
-	game->e_count = 0;
 	while (++y < game->total_y - 1)
 	{
 		x = 0;
 		while (++x < game->total_x - 1)
 		{
 			if (game->map[y][x] == 'P')
+			{
+				game->y_player = y;
+				game->x_player = x;
 				game->p_count++;
+			}
 			else if (game->map[y][x] == 'E')
 				game->e_count++;
 			else if (game->map[y][x] == 'C')
@@ -60,7 +92,6 @@ void	check_map(t_game *game)
 	int	y;
 	int	x;
 
-	game->total_x = strlen(game->map[1]);
 	y = -1;
 	while (game->map[++y])
 	{
@@ -69,11 +100,6 @@ void	check_map(t_game *game)
 		x = -1;
 		while (game->map[y][++x])
 		{
-			if (game->map[y][x] == 'P')
-			{
-				game->y_player = y;
-				game->y_player = y;
-			}
 			if (y == 0 || x == 0 || y == game->total_y - 1
 				|| x == game->total_x - 1)
 				if (game->map[y][x] != '1')
@@ -81,4 +107,6 @@ void	check_map(t_game *game)
 		}
 	}
 	check_padding(game);
+	flood_fill(game, game->y_player, game->x_player);
+	is_played(game->to_check);
 }
