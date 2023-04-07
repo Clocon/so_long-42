@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 13:03:58 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/07 13:47:12 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/07 14:10:51 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	init_struct(t_game *game)
 	game->moves = 0;
 	game->map_width = game->total_x * REND;
 	game->map_height = game->total_y * REND;
-	ft_printf("X =%d, Y =%d\n", game->x_player, game->y_player);
 }
 
 static void	map_taker(t_game *game)
@@ -48,14 +47,14 @@ static void	map_taker(t_game *game)
 	init_struct(game);
 	check_map(game);
 }
-void ft_void(void)
+/* void ft_void(void)
 {
 	system("leaks -q so_long");
-}
+} */
 
 int	main(int argc, char **argv)
 {
-	atexit(ft_void);
+	//atexit(ft_void);
 	t_game	game;
 
 	if (argc == 2)
