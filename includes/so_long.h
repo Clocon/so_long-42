@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:51:53 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/05 19:50:31 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/07 13:59:38 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "../get_next_line/includes/get_next_line.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 # include <math.h>
-
 
 // Constants defines
 # define INVALID_EXT "The file extension must be <.bar>\n"
@@ -32,8 +31,11 @@
 # define IMPOSIBLE_WIN "The map has no viable way to complete the game\n"
 # define EMPTY_MAP "The map is empty\n"
 # define INVALID_MAP "The map is not valid\n"
+# define WIN_OK "Congratulations, you are so good!!"
+# define WIN_KO "You need take all items for win!!"
+# define N_MOVES " Movements"
 
-# define SPRITE_SIZE 64
+# define REND 64
 
 typedef struct s_game
 {
@@ -43,11 +45,14 @@ typedef struct s_game
 	int			fd;
 	int			y_player;
 	int			x_player;
+	int			new_yp;
+	int			new_xp;
 	int			total_y;
 	int			total_x;
 	int			p_count;
 	int			c_count;
 	int			e_count;
+	int			moves;
 	int			map_width;
 	int			map_height;
 	mlx_t		*mlx;
@@ -73,6 +78,7 @@ void	check_map(t_game *game);
 
 /*Functions for freerror.c*/
 void	error(char *msg, int to_exit);
+void	console_msg(char *msg);
 void	free_matrix(char **str);
 void	final_free(t_game *game);
 
@@ -81,4 +87,8 @@ char	*free_strjoin(char *s1, char *s2);
 
 /*Functions for game.c*/
 void	game_start(t_game *game);
+void	print_map(t_game *game);
+
+/*Functions for moves_controls.c*/
+void	controls(mlx_key_data_t keydata, void *gv);
 #endif

@@ -6,17 +6,19 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:03:21 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/05 19:57:21 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/07 13:02:45 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static void	print_map(t_game *game)
+void	print_map(t_game *game)
 {
-	int	y;
-	int	x;
+	int		y;
+	int		x;
+	mlx_t	*mlx;
 
+	mlx = game->mlx;
 	y = -1;
 	while (++y < game->total_y)
 	{
@@ -24,15 +26,15 @@ static void	print_map(t_game *game)
 		while (++x < game->total_x)
 		{
 			if (game->map[y][x] == '0')
-				mlx_image_to_window(game->mlx, game->floor_img, x * SPRITE_SIZE, y * SPRITE_SIZE);
+				mlx_image_to_window(mlx, game->floor_img, x * REND, y * REND);
 			else if (game->map[y][x] == '1')
-				mlx_image_to_window(game->mlx, game->limit_img, x * SPRITE_SIZE, y * SPRITE_SIZE);
+				mlx_image_to_window(mlx, game->limit_img, x * REND, y * REND);
 			else if (game->map[y][x] == 'P')
-				mlx_image_to_window(game->mlx, game->player_img, x * SPRITE_SIZE, y * SPRITE_SIZE);
+				mlx_image_to_window(mlx, game->player_img, x * REND, y * REND);
 			else if (game->map[y][x] == 'C')
-				mlx_image_to_window(game->mlx, game->collect_img, x * SPRITE_SIZE, y * SPRITE_SIZE);
+				mlx_image_to_window(mlx, game->collect_img, x * REND, y * REND);
 			else if (game->map[y][x] == 'E')
-				mlx_image_to_window(game->mlx, game->gate_img, x * SPRITE_SIZE, y * SPRITE_SIZE);
+				mlx_image_to_window(mlx, game->gate_img, x * REND, y * REND);
 		}
 	}
 }
@@ -52,11 +54,11 @@ static void	window_generator(t_game *game)
 	game->player_img = mlx_texture_to_image(game->mlx, img.player);
 	game->collect_img = mlx_texture_to_image(game->mlx, img.collect);
 	game->gate_img = mlx_texture_to_image(game->mlx, img.gate);
-/* 	mlx_delete_texture(img.limits);
+	mlx_delete_texture(img.limits);
 	mlx_delete_texture(img.floor);
 	mlx_delete_texture(img.player);
 	mlx_delete_texture(img.collect);
-	mlx_delete_texture(img.gate); */
+	mlx_delete_texture(img.gate);
 }
 
 /*
@@ -72,7 +74,7 @@ void	game_start(t_game *game)
 {
 	window_generator(game);
 	print_map(game);
-	//mlx_key_hook()
+	mlx_key_hook(game->mlx, &controls, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
 }

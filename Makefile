@@ -6,7 +6,7 @@
 #    By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 13:19:05 by lumorale          #+#    #+#              #
-#    Updated: 2023/04/05 17:03:46 by lumorale         ###   ########.fr        #
+#    Updated: 2023/04/07 11:57:46 by lumorale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS			=	src/so_long.c \
 					src/freerror.c \
 					src/utils.c \
 					src/game.c \
+					src/moves_controls.c \
 					
 
 #		COLORS		#
