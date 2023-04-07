@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 13:03:58 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/07 14:10:51 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:14:21 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	map_taker(t_game *game)
 		tmp = get_next_line(game->fd);
 		if (!tmp)
 			break ;
-		game->no_map = free_strjoin(game->no_map, tmp);
+		game->no_map = ft_strjoin_free(game->no_map, tmp);
 		free(tmp);
 		game->total_y++;
 	}

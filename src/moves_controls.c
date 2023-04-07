@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 11:44:03 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/07 14:07:52 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:14:40 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	get_action(t_game *game, char new_p, char old_p)
 	game->map[game->y_player][game->x_player] = old_p;
 	game->moves++;
 	str = ft_itoa(game->moves);
-	str = free_strjoin(str, N_MOVES);
+	str = ft_strjoin_free(str, N_MOVES);
 	console_msg(str);
 	free(str);
 	print_map(game);

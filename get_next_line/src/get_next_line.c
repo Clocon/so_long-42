@@ -6,13 +6,13 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 12:34:20 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/04 16:22:32 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:16:07 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/get_next_line.h"
 
-static char	*ft_strjoin_free(char *s1, char *s2, int n)
+static char	*strjoin_free(char *s1, char *s2, int n)
 {
 	char	*str;
 	int		s1len;
@@ -87,7 +87,7 @@ char	*ft_read_file(int fd, char *str)
 		readed = read(fd, buffer, BUFFER_SIZE);
 		if (readed <= 0)
 			break ;
-		str = ft_strjoin_free(str, buffer, readed);
+		str = strjoin_free(str, buffer, readed);
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}

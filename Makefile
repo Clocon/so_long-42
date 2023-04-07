@@ -6,7 +6,7 @@
 #    By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 13:19:05 by lumorale          #+#    #+#              #
-#    Updated: 2023/04/07 11:57:46 by lumorale         ###   ########.fr        #
+#    Updated: 2023/04/07 15:14:46 by lumorale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ AR				=	ar -rcs
 SRCS			=	src/so_long.c \
 					src/checker.c \
 					src/freerror.c \
-					src/utils.c \
 					src/game.c \
 					src/moves_controls.c \
 					
