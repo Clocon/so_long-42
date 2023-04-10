@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:51:53 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/07 13:59:38 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/10 16:22:04 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define WIN_KO "You need take all items for win!!"
 # define N_MOVES " Movements"
 
-# define REND 64
+# define SPR 64
 
 typedef struct s_game
 {
@@ -81,9 +81,6 @@ void	error(char *msg, int to_exit);
 void	console_msg(char *msg);
 void	free_matrix(char **str);
 void	final_free(t_game *game);
-
-/*Functions for utils.c*/
-char	*free_strjoin(char *s1, char *s2);
 
 /*Functions for game.c*/
 void	game_start(t_game *game);

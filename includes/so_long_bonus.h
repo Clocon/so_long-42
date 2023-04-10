@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 12:34:46 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/10 12:35:06 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/10 20:30:24 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@
 # define WIN_OK "Congratulations, you are so good!!"
 # define WIN_KO "You need take all items for win!!"
 # define N_MOVES " Movements"
+# define EVOL "Tyroge has evolved!"
+# define LOSE "You have been defeated :("
 
-# define REND 64
+# define SPR 64
 
 typedef struct s_game
 {
@@ -45,6 +47,8 @@ typedef struct s_game
 	int			fd;
 	int			y_player;
 	int			x_player;
+	int			y_enemy;
+	int			x_enemy;
 	int			new_yp;
 	int			new_xp;
 	int			total_y;
@@ -55,12 +59,19 @@ typedef struct s_game
 	int			moves;
 	int			map_width;
 	int			map_height;
+	double		counter;
 	mlx_t		*mlx;
 	mlx_image_t	*limit_img;
 	mlx_image_t	*floor_img;
 	mlx_image_t	*player_img;
 	mlx_image_t	*collect_img;
 	mlx_image_t	*gate_img;
+	mlx_image_t	*hitmonlee;
+	mlx_image_t	*hitmonchan;
+	mlx_image_t	*hitmontop;
+	mlx_image_t	*enemy_l;
+	mlx_image_t	*enemy_r;
+	mlx_image_t	*move_count;
 }	t_game;
 
 typedef struct s_textures
@@ -72,18 +83,23 @@ typedef struct s_textures
 	mlx_texture_t	*gate;
 }	t_textures;
 
+typedef struct s_textures_b
+{
+	mlx_texture_t	*hitmonlee;
+	mlx_texture_t	*hitmonchan;
+	mlx_texture_t	*hitmontop;
+	mlx_texture_t	*enemy_l;
+	mlx_texture_t	*enemy_r;
+}	t_textures_b;
+
 /*Functions for checker.c*/
-void	check_args(char **argv);
 void	check_map(t_game *game);
 
 /*Functions for freerror.c*/
-void	error(char *msg, int to_exit);
-void	console_msg(char *msg);
+void	error(char *msg);
+void	console_msg(char *msg, int to_exit);
 void	free_matrix(char **str);
 void	final_free(t_game *game);
-
-/*Functions for utils.c*/
-char	*free_strjoin(char *s1, char *s2);
 
 /*Functions for game.c*/
 void	game_start(t_game *game);
@@ -91,4 +107,8 @@ void	print_map(t_game *game);
 
 /*Functions for moves_controls.c*/
 void	controls(mlx_key_data_t keydata, void *gv);
+
+/*Functions for enemy_moves.c*/
+void	enemy_moves(void *vg);
+void	print_moves(t_game *game);
 #endif

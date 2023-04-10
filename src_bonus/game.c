@@ -6,11 +6,25 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:03:21 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/07 13:02:45 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/10 20:30:51 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
+
+static void	print_map_bonus(t_game *game, int y, int x, mlx_t *mlx)
+{
+	if (game->map[y][x] == 'F')
+		mlx_image_to_window(mlx, game->hitmonchan, x * SPR, y * SPR);
+	else if (game->map[y][x] == 'K')
+		mlx_image_to_window(mlx, game->hitmonlee, x * SPR, y * SPR);
+	else if (game->map[y][x] == 'T')
+		mlx_image_to_window(mlx, game->hitmontop, x * SPR, y * SPR);
+	else if (game->map[y][x] == 'L')
+		mlx_image_to_window(mlx, game->enemy_l, x * SPR, y * SPR);
+	else if (game->map[y][x] == 'R')
+		mlx_image_to_window(mlx, game->enemy_r, x * SPR, y * SPR);
+}
 
 void	print_map(t_game *game)
 {
@@ -26,17 +40,39 @@ void	print_map(t_game *game)
 		while (++x < game->total_x)
 		{
 			if (game->map[y][x] == '0')
-				mlx_image_to_window(mlx, game->floor_img, x * REND, y * REND);
+				mlx_image_to_window(mlx, game->floor_img, x * SPR, y * SPR);
 			else if (game->map[y][x] == '1')
-				mlx_image_to_window(mlx, game->limit_img, x * REND, y * REND);
+				mlx_image_to_window(mlx, game->limit_img, x * SPR, y * SPR);
 			else if (game->map[y][x] == 'P')
-				mlx_image_to_window(mlx, game->player_img, x * REND, y * REND);
+				mlx_image_to_window(mlx, game->player_img, x * SPR, y * SPR);
 			else if (game->map[y][x] == 'C')
-				mlx_image_to_window(mlx, game->collect_img, x * REND, y * REND);
+				mlx_image_to_window(mlx, game->collect_img, x * SPR, y * SPR);
 			else if (game->map[y][x] == 'E')
-				mlx_image_to_window(mlx, game->gate_img, x * REND, y * REND);
+				mlx_image_to_window(mlx, game->gate_img, x * SPR, y * SPR);
+			print_map_bonus(game, y, x, mlx);
 		}
 	}
+}
+
+static void	bonus_textures(t_game *game)
+{
+	t_textures_b	bonus;
+
+	bonus.hitmonlee = mlx_load_png("img/player_lee.png");
+	bonus.hitmonchan = mlx_load_png("img/player_chan.png");
+	bonus.hitmontop = mlx_load_png("img/player_top.png");
+	bonus.enemy_l = mlx_load_png("img/enemy_l.png");
+	bonus.enemy_r = mlx_load_png("img/enemy_r.png");
+	game->hitmonlee = mlx_texture_to_image(game->mlx, bonus.hitmonlee);
+	game->hitmonchan = mlx_texture_to_image(game->mlx, bonus.hitmonchan);
+	game->hitmontop = mlx_texture_to_image(game->mlx, bonus.hitmontop);
+	game->enemy_l = mlx_texture_to_image(game->mlx, bonus.enemy_l);
+	game->enemy_r = mlx_texture_to_image(game->mlx, bonus.enemy_r);
+	mlx_delete_texture(bonus.hitmonlee);
+	mlx_delete_texture(bonus.hitmonchan);
+	mlx_delete_texture(bonus.hitmontop);
+	mlx_delete_texture(bonus.enemy_l);
+	mlx_delete_texture(bonus.enemy_r);
 }
 
 static void	window_generator(t_game *game)
@@ -59,11 +95,12 @@ static void	window_generator(t_game *game)
 	mlx_delete_texture(img.player);
 	mlx_delete_texture(img.collect);
 	mlx_delete_texture(img.gate);
+	bonus_textures(game);
 }
 
 /*
-sprite_w = tamaño ancho
-sprite_h = tamaño alto
+SPR_w = tamaño ancho
+SPR_h = tamaño alto
 map_w = ancho mapa
 map_h = alto mapa
 map_nr = nº row?
@@ -73,7 +110,10 @@ map_nc = nº col?
 void	game_start(t_game *game)
 {
 	window_generator(game);
+	game->counter = mlx_get_time();
 	print_map(game);
+	print_moves(game);
+	mlx_loop_hook(game->mlx, &enemy_moves, game);
 	mlx_key_hook(game->mlx, &controls, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);

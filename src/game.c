@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:03:21 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/07 13:02:45 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/10 20:41:05 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ void	print_map(t_game *game)
 		while (++x < game->total_x)
 		{
 			if (game->map[y][x] == '0')
-				mlx_image_to_window(mlx, game->floor_img, x * REND, y * REND);
+				mlx_image_to_window(mlx, game->floor_img, x * SPR, y * SPR);
 			else if (game->map[y][x] == '1')
-				mlx_image_to_window(mlx, game->limit_img, x * REND, y * REND);
+				mlx_image_to_window(mlx, game->limit_img, x * SPR, y * SPR);
 			else if (game->map[y][x] == 'P')
-				mlx_image_to_window(mlx, game->player_img, x * REND, y * REND);
+				mlx_image_to_window(mlx, game->player_img, x * SPR, y * SPR);
 			else if (game->map[y][x] == 'C')
-				mlx_image_to_window(mlx, game->collect_img, x * REND, y * REND);
+				mlx_image_to_window(mlx, game->collect_img, x * SPR, y * SPR);
 			else if (game->map[y][x] == 'E')
-				mlx_image_to_window(mlx, game->gate_img, x * REND, y * REND);
+				mlx_image_to_window(mlx, game->gate_img, x * SPR, y * SPR);
 		}
 	}
 }
