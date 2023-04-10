@@ -6,11 +6,12 @@
 #    By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 13:19:05 by lumorale          #+#    #+#              #
-#    Updated: 2023/04/07 15:14:46 by lumorale         ###   ########.fr        #
+#    Updated: 2023/04/10 12:55:33 by lumorale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	so_long
+NAME_B			=	so_long_bonus
 
 CC				=	gcc
 CFLAGS			=	-Wall -Werror -Wextra
@@ -22,6 +23,12 @@ SRCS			=	src/so_long.c \
 					src/freerror.c \
 					src/game.c \
 					src/moves_controls.c \
+
+SRCS_B			=	src_bonus/so_long.c \
+					src_bonus/checker.c \
+					src_bonus/freerror.c \
+					src_bonus/game.c \
+					src_bonus/moves_controls.c \
 					
 
 #		COLORS		#
@@ -31,6 +38,8 @@ CRED			=\033[0;91m
 CRESET			=\033[0m
 
 OBJS			=	$(SRCS:.c=.o)
+
+OBJS_B			=	$(SRCS_B:.c=.o)
 
 INC_LFT = -Ilibft
 LIBFT = libft/libft.a
@@ -70,8 +79,15 @@ $(NAME):		$(OBJS)
 				@$(CC) $(FLAGS) $(INC) $(LIBMLX) $(LIBFT) $(PRINTF) $(LINE) $(OBJS)   -o $(NAME)
 				@echo "\n$(CYELLOW)$(NAME) -> $(CGREEN) compiled$(CRESET)"
 
+$(NAME_B):		$(OBJS_B)
+				@$(CC) $(FLAGS) $(INC) $(LIBMLX) $(LIBFT) $(PRINTF) $(LINE) $(OBJS_B)   -o $(NAME_B)
+				@echo "\n$(CYELLOW)$(NAME_B) -> $(CGREEN) compiled$(CRESET)"
+
+bonus:			$(LIBFT) $(PRINTF) $(LINE) $(LIBMLXL) $(NAME_B)
+
 clean:
-				@$(RM) $(OBJS)  
+				@$(RM) $(OBJS)
+				@$(RM) $(OBJS_B)
 				@make -C ./libft clean
 				@make -C ./ft_printf clean
 				@make -C ./get_next_line clean
@@ -80,6 +96,7 @@ clean:
 
 fclean:			clean
 				@$(RM) $(NAME)
+				@$(RM) $(NAME_B)
 				@make -C ./libft fclean
 				@make -C ./ft_printf fclean
 				@make -C ./get_next_line fclean
@@ -88,4 +105,4 @@ fclean:			clean
 
 re:				fclean all
 
-.PHONY:			all clean fclean re
+.PHONY:			all clean fclean re bonus
