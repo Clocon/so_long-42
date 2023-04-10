@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 13:03:58 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/10 12:32:47 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/10 17:30:35 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void	init_struct(t_game *game)
 	game->c_count = 0;
 	game->e_count = 0;
 	game->moves = 0;
-	game->map_width = game->total_x * REND;
-	game->map_height = game->total_y * REND;
+	game->map_width = game->total_x * SPR;
+	game->map_height = game->total_y * SPR;
 }
 
 static void	map_taker(t_game *game)
