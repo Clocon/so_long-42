@@ -63,6 +63,17 @@ For so_long_bonus
 
         ./so_long_bonus map/bonus/*.bar
 
+## Screenshot of Game
+
+<p align="center">
+<img width="894" alt="image" src="https://user-images.githubusercontent.com/113030191/231262410-163a8f29-81e7-4a1c-b60a-9ce3d0e2bbc3.png">
+
+<img width="893" alt="image" src="https://user-images.githubusercontent.com/113030191/231262719-6af6ba41-7b3d-4893-9333-7ac5cb8e5521.png">
+
+<img width="889" alt="image" src="https://user-images.githubusercontent.com/113030191/231263456-32e2f9e6-c725-4cae-ad3c-ed2a509e08ba.png">
+
+</p>
+
 ### Links to my other projects at 42:
 
 - **[Main Page](../../../Clocon)**
