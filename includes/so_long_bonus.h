@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 12:34:46 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/11 12:09:19 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/11 12:56:19 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define INVALID_MAP "The map is not valid\n"
 # define WIN_OK "Congratulations, you are so good!!"
 # define WIN_KO "You need take all items for win!!"
+# define CANT_SCAPE "You can't scape of your enemy!"
 # define N_MOVES " Movements"
 # define EVOL "Tyroge has evolved!"
 # define LOSE "You have been defeated :("
@@ -93,6 +94,10 @@ typedef struct s_textures_b
 	mlx_texture_t	*enemy_r;
 }	t_textures_b;
 
+/*Functions for to_print.c*/
+void	print_moves(t_game *game);
+void	print_map(t_game *game);
+
 /*Functions for checker.c*/
 void	check_map(t_game *game);
 
@@ -104,12 +109,11 @@ void	final_free(t_game *game);
 
 /*Functions for game.c*/
 void	game_start(t_game *game);
-void	print_map(t_game *game);
 
 /*Functions for moves_controls.c*/
 void	controls(mlx_key_data_t keydata, void *gv);
 
 /*Functions for enemy_moves.c*/
+int		free_way(t_game *game, int y);
 void	enemy_moves(void *vg);
-void	print_moves(t_game *game);
 #endif

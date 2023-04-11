@@ -6,7 +6,7 @@
 #    By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 13:19:05 by lumorale          #+#    #+#              #
-#    Updated: 2023/04/10 16:58:41 by lumorale         ###   ########.fr        #
+#    Updated: 2023/04/11 12:39:43 by lumorale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS_B			=	src_bonus/so_long.c \
 					src_bonus/checker.c \
 					src_bonus/freerror.c \
 					src_bonus/game.c \
+					src_bonus/to_print.c \
 					src_bonus/moves_controls.c \
 					src_bonus/enemy_moves.c \
 					

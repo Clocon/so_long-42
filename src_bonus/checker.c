@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 13:25:52 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/11 12:15:41 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/11 12:51:50 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ static void	bonus_check(t_game *game, int y, int x)
 		game->y_enemy = y;
 		game->x_enemy = x;
 		game->c_enemy++;
+		if (!free_way(game, y - 1) && !free_way(game, y + 1))
+			error(CANT_SCAPE);
 	}
 	else if (game->map[y][x] != '0' && game->map[y][x] != 'L'
 			&& game->map[y][x] != '1' && game->map[y][x] != 'R')

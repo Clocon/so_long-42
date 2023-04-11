@@ -6,21 +6,27 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:58:31 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/11 12:30:10 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/11 12:56:53 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-void	print_moves(t_game *game)
+int	free_way(t_game *game, int y)
 {
-	char	*str;
+	int	i;
 
-	str = ft_itoa(game->moves);
-	print_map(game);
-	mlx_delete_image(game->mlx, game->move_count);
-	game->move_count = mlx_put_string(game->mlx, str, 15, 14);
-	free(str);
+	i = 0;
+	if (y > 0 && y < game->total_y)
+	{
+		while (++i < game-> total_x)
+		{
+			if (game->map[y][i] == '0' || game->map[y][i] == 'C')
+				if (game->map[y][i + 1] == '0' || game->map[y][i + 1] == 'C')
+					return (1);
+		}
+	}
+	return (0);
 }
 
 static void	check_lose(t_game *game)
