@@ -21,6 +21,7 @@ In my case, I only needed to do the following steps:
 
     curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
 
+__________________________________________________________________________
 
     brew install glfw
     
@@ -28,7 +29,7 @@ If you need more information or have a problem, I leave here the link that I use
 
 ### Functions used
 
-Mandatory :
+**Mandatory :**
 
 - **mlx_init**(**int32_t** width, **int32_t** height, **const char\*** title, **bool** resize) : Is a function in the **minilibx** library, which is a simple graphics library designed for use in C programming language. It function initializes the connection between your program and the graphics system.
 - **mlx_load_png**(**const char\*** path) : Is a function in the **minilibx** library that allows you to load PNG images into your graphics program.
@@ -40,18 +41,36 @@ Mandatory :
 - **mlx_loop**(**mlx_t\*** mlx) : Is a function in the **minilibx** library that enters an infinite loop to handle events from the windowing system, such as keyboard and mouse input.
 - **mlx_terminate**(**mlx_t\*** mlx) : Is a function in the **minilibx** library that cleans up the resources allocated by **mlx_init()** and other functions in the library.
 
-Bonus :
+**Bonus :**
 
 - **mlx_loop_hook**(**mlx_t\*** mlx, **void** (*f)(void*), **void\*** param) : Is a function in the **minilibx** library that allows you to register a function that will be called repeatedly while the event loop is running.
 - **mlx_put_string**(**mlx_t\*** mlx, **const char\*** str, **int32_t** x, **int32_t** y) :  Is a function in the **MiniLibX (MLX)** library that displays a string on a window. 
-- **game->mlx->delta_time** : The delta time is an important metric for calculating the rate of change in a game, as it allows the program to ensure that the game runs at a consistent speed on different hardware.
-
-I use this data to accumulate the execution time and make the enemy move in the case of reaching 0.5 seconds and make it move every 0.5 seconds.
+- **game->mlx->delta_time** : The delta time is an important metric for calculating the rate of change in a game, as it allows the program to ensure that the game runs at a consistent speed on different hardware. I use this data to accumulate the execution time and make the enemy move in the case of reaching 0.5 seconds and make it move every 0.5 seconds.
 
 <p align="center">
 <img width="578" alt="image" src="https://user-images.githubusercontent.com/113030191/231243811-421ac877-d66a-4cc5-876d-1cdedcd1bc75.png">
 </p>
 
+## Usage
+
+To compile the so_long program, run the following command **make**, and run **make bonus** for compile so_long_bonus.
+
+To use the so_long program, run the following command:
+        
+        ./so_long map/*.bar
+
+For so_long_bonus
+
+        ./so_long_bonus map/bonus/*.bar
+
+### Links to my other projects at 42:
+
+- **[Main Page](../../../Clocon)**
+- **[libft](../../../libft-42)**
+- **[ft_printf](../../../ft_printf-42)**
+- **[get_next_line](../../../get_next_line-42)**
+- **[pipex](../../../pipex-42)**
+- **[push_swap](../../../push_swap-42)**
 
 
 
