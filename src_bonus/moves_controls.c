@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 11:44:03 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/10 20:31:25 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/11 12:21:27 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static void	get_action(t_game *game, char new_p, char old_p)
 
 
 	print_map(game);
+	print_moves(game);
 	game->x_player = game->new_xp;
 	game->y_player = game->new_yp;
 }

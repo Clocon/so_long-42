@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 12:34:46 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/10 20:30:24 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/11 12:09:19 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_game
 	int			p_count;
 	int			c_count;
 	int			e_count;
+	int			c_enemy;
 	int			moves;
 	int			map_width;
 	int			map_height;

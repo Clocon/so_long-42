@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:03:21 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/10 20:30:51 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/11 12:23:15 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,23 +98,15 @@ static void	window_generator(t_game *game)
 	bonus_textures(game);
 }
 
-/*
-SPR_w = tamaño ancho
-SPR_h = tamaño alto
-map_w = ancho mapa
-map_h = alto mapa
-map_nr = nº row?
-map_nc = nº col?
-*/
-
 void	game_start(t_game *game)
 {
 	window_generator(game);
 	game->counter = mlx_get_time();
 	print_map(game);
 	print_moves(game);
-	mlx_loop_hook(game->mlx, &enemy_moves, game);
 	mlx_key_hook(game->mlx, &controls, game);
+	if (game->c_enemy == 1)
+		mlx_loop_hook(game->mlx, &enemy_moves, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
 }

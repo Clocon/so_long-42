@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 13:03:58 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/10 20:30:00 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/11 12:28:24 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	init_struct(t_game *game)
 	game->map_height = game->total_y * SPR;
 	game->counter = 0;
 	game->move_count = 0;
+	game->c_enemy = 0;
 }
 
 static void	map_taker(t_game *game)
@@ -50,11 +51,6 @@ static void	map_taker(t_game *game)
 	check_map(game);
 }
 
-/* void ft_void(void)
-{
-	system("leaks -q so_long");
-} */
-
 static void	check_args(char **argv)
 {
 	if (ft_strncmp(argv[1], "map/", 4) != 0)
@@ -65,7 +61,6 @@ static void	check_args(char **argv)
 
 int	main(int argc, char **argv)
 {
-	//atexit(ft_void);
 	t_game	game;
 
 	if (argc == 2)
