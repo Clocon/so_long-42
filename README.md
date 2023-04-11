@@ -2,8 +2,15 @@
 
 This project asks for the creation of a 2D game with the MLX graphics library. I have chosen a setting in Pokemon for this project.
 
-<img width="631" alt="image" src="https://user-images.githubusercontent.com/113030191/231206541-c44ff6a5-aa47-4a40-a5a4-2600cee1c4c7.png">
 
+<p align="center">
+<img width="1346" alt="image" src="https://user-images.githubusercontent.com/113030191/231244614-4a4e99df-3d7d-444f-bc8e-e9c78275ab62.png">
+</p>
+
+<p align="center">
+<img width="631" alt="image" src="https://user-images.githubusercontent.com/113030191/231206541-c44ff6a5-aa47-4a40-a5a4-2600cee1c4c7.png">
+</p>
+    
 ## MLX42 Library
 
 Library implementation method and library functions used in this project:
@@ -36,4 +43,16 @@ Mandatory :
 Bonus :
 
 - **mlx_loop_hook**(**mlx_t\*** mlx, **void** (*f)(void*), **void\*** param) : Is a function in the **minilibx** library that allows you to register a function that will be called repeatedly while the event loop is running.
-- **game->mlx->delta_time** : 
+- **mlx_put_string**(**mlx_t\*** mlx, **const char\*** str, **int32_t** x, **int32_t** y) :  Is a function in the **MiniLibX (MLX)** library that displays a string on a window. 
+- **game->mlx->delta_time** : The delta time is an important metric for calculating the rate of change in a game, as it allows the program to ensure that the game runs at a consistent speed on different hardware.
+
+I use this data to accumulate the execution time and make the enemy move in the case of reaching 0.5 seconds and make it move every 0.5 seconds.
+
+<p align="center">
+<img width="578" alt="image" src="https://user-images.githubusercontent.com/113030191/231243811-421ac877-d66a-4cc5-876d-1cdedcd1bc75.png">
+</p>
+
+
+
+
+
