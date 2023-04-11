@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 11:44:03 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/11 12:21:27 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/11 12:31:37 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,6 @@ static void	get_action(t_game *game, char new_p, char old_p)
 		console_msg(EVOL, 0);
 	game->map[game->new_yp][game->new_xp] = new_p;
 	game->map[game->y_player][game->x_player] = old_p;
-
-
-
-/* 	str = ft_itoa(game->moves);
-	ft_printf("%s\n", str);
-	mlx_delete_image(game->mlx, game->move_count);
-	game->move_count = mlx_put_string(game->mlx, str, 1, 1);
-	free(str); */
-
-
-
 	print_map(game);
 	print_moves(game);
 	game->x_player = game->new_xp;
