@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 13:25:52 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/10 12:25:12 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/11 13:18:14 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	check_args(char **argv)
 {
 	if (ft_strncmp(argv[1], "map/", 4) != 0)
-		error(INVALID_PATH, 1);
+		error(INVALID_PATH);
 	if (ft_strncmp(&argv[1][(ft_strlen(argv[1]) - 4)], ".bar", 4) != 0)
-		error(INVALID_EXT, 1);
+		error(INVALID_EXT);
 }
 
 static void	is_played(char **to_check)
@@ -32,7 +32,7 @@ static void	is_played(char **to_check)
 		while (to_check[i][++j])
 		{
 			if (to_check[i][j] != '1' && to_check[i][j] != '0')
-				error(IMPOSIBLE_WIN, 1);
+				error(IMPOSIBLE_WIN);
 		}
 	}
 }
@@ -77,11 +77,11 @@ static void	check_padding(t_game *game)
 			else if (game->map[y][x] == 'C')
 				game->c_count++;
 			else if (game->map[y][x] != '0' && game->map[y][x] != '1')
-				error(BAD_CONTAIN, 1);
+				error(BAD_CONTAIN);
 		}
 	}
 	if (game->p_count != 1 || game->c_count < 1 || game->e_count != 1)
-		error(BAD_ELEMENTS, 1);
+		error(BAD_ELEMENTS);
 }
 
 void	check_map(t_game *game)
@@ -93,14 +93,14 @@ void	check_map(t_game *game)
 	while (game->map[++y])
 	{
 		if (game->total_x != ft_strlen(game->map[y]))
-			error(BAD_ROWSIZE, 1);
+			error(BAD_ROWSIZE);
 		x = -1;
 		while (game->map[y][++x])
 		{
 			if (y == 0 || x == 0 || y == game->total_y - 1
 				|| x == game->total_x - 1)
 				if (game->map[y][x] != '1')
-					error(MAP_NOTVALID, 1);
+					error(MAP_NOTVALID);
 		}
 	}
 	check_padding(game);

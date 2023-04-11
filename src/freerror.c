@@ -6,17 +6,16 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 12:17:18 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/07 13:57:10 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/11 13:19:11 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	error(char *msg, int to_exit)
+void	error(char *msg)
 {
 	ft_putstr_fd(ft_strjoin("Error\n", msg), 2);
-	if (to_exit == 1)
-		exit (1);
+	exit(1);
 }
 
 void	console_msg(char *msg)

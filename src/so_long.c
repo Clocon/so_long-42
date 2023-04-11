@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 13:03:58 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/10 17:30:35 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/11 13:18:49 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,29 +41,24 @@ static void	map_taker(t_game *game)
 		game->total_y++;
 	}
 	if (!game->no_map)
-		error(EMPTY_MAP, 1);
+		error(EMPTY_MAP);
 	if (game->no_map[0] == '\n')
-		error(INVALID_MAP, 1);
+		error(INVALID_MAP);
 	init_struct(game);
 	check_map(game);
 }
-/* void ft_void(void)
-{
-	system("leaks -q so_long");
-} */
 
 int	main(int argc, char **argv)
 {
-	//atexit(ft_void);
 	t_game	game;
 
 	if (argc == 2)
 		check_args(argv);
 	else
-		error(INVALID_NARG, 1);
+		error(INVALID_NARG);
 	game.fd = open(argv[1], O_RDONLY);
 	if (game.fd == -1)
-		error(INVALID_FDMAP, 1);
+		error(INVALID_FDMAP);
 	map_taker(&game);
 	game_start(&game);
 	final_free(&game);
