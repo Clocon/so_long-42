@@ -6,7 +6,7 @@
 /*   By: lumorale <lumorale@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 11:44:03 by lumorale          #+#    #+#             */
-/*   Updated: 2023/04/11 12:31:37 by lumorale         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:44:34 by lumorale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static char	check_evol(t_game *game)
 		game->map[game->new_yp][game->new_xp] = 'T';
 	else if (game->moves > 19)
 		game->map[game->new_yp][game->new_xp] = 'F';
+	console_msg(EVOL, 0);
 	return (game->map[game->new_yp][game->new_xp]);
 }
 
@@ -43,8 +44,6 @@ static void	win_condition(t_game *game)
 static void	get_action(t_game *game, char new_p, char old_p)
 {
 	game->moves++;
-	if (game->map[game->new_yp][game->new_xp] == 'C')
-		console_msg(EVOL, 0);
 	game->map[game->new_yp][game->new_xp] = new_p;
 	game->map[game->y_player][game->x_player] = old_p;
 	print_map(game);
