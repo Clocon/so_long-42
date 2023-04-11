@@ -30,4 +30,10 @@ Mandatory :
 - **mlx_image_to_window**(**mlx_t\*** mlx, **mlx_image_t\*** img, **int32_t** x, **int32_t** y) : Is a function in the **minilibx** library that allows you to draw an image onto a window.
 - **mlx_key_hook**(**mlx_t\*** mlx, **mlx_keyfunc** func, **void\*** param) : Is a function in the **minilibx** library that allows you to register a function to be called whenever a specific key is pressed or released on the keyboard. This function is often used to handle user input in interactive graphics applications.
 - **mlx_close_window**(**mlx_t\*** mlx) : Is a function in the **minilibx** library that allows you to close a window that was created using **mlx_new_window()**. When you call this function, the specified window will be closed, and any resources associated with it will be freed.
+- **mlx_loop**(**mlx_t\*** mlx) : Is a function in the **minilibx** library that enters an infinite loop to handle events from the windowing system, such as keyboard and mouse input.
+- **mlx_terminate**(**mlx_t\*** mlx) : Is a function in the **minilibx** library that cleans up the resources allocated by **mlx_init()** and other functions in the library.
 
+Bonus :
+
+- **mlx_loop_hook**(**mlx_t\*** mlx, **void** (*f)(void*), **void\*** param) : Is a function in the **minilibx** library that allows you to register a function that will be called repeatedly while the event loop is running.
+- **game->mlx->delta_time** : 
