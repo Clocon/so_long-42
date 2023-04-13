@@ -57,11 +57,11 @@ To compile the so_long program, run the following command **make**, and run **ma
 
 To use the so_long program, run the following command:
         
-        ./so_long map/*.bar
+        ./so_long map/*.ber
 
 For so_long_bonus
 
-        ./so_long_bonus map/bonus/*.bar
+        ./so_long_bonus map/bonus/*.ber
 
 ## Screenshot of Game
 
