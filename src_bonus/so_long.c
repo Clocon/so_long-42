@@ -53,9 +53,9 @@ static void	map_taker(t_game *game)
 
 static void	check_args(char **argv)
 {
-	if (ft_strncmp(argv[1], "map/", 4) != 0)
+	if (ft_strncmp(argv[1], "map/bonus/", 10) != 0)
 		error(INVALID_PATH);
-	if (ft_strncmp(&argv[1][(ft_strlen(argv[1]) - 4)], ".bar", 4) != 0)
+	if (ft_strncmp(&argv[1][(ft_strlen(argv[1]) - 4)], ".ber", 4) != 0)
 		error(INVALID_EXT);
 }
 
