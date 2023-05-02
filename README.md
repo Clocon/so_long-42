@@ -82,6 +82,7 @@ For so_long_bonus
 - **[get_next_line](../../../get_next_line-42)**
 - **[pipex](../../../pipex-42)**
 - **[push_swap](../../../push_swap-42)**
+- **[philosophers](../../../philosophers-42)**
 
 
 
